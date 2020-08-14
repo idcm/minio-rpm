@@ -1,6 +1,6 @@
 %define debug_package %{nil}
 
-%define  tag   RELEASE.2020-05-16T01-44-37Z
+%define  tag   RELEASE.2020-08-08T02-33-58Z
 %define  stag  %(echo "%{tag}" | tr -d '-')
 
 Name:          minio-mc
@@ -43,6 +43,30 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sun Aug 09 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200808T023358Z-1
+- Update to RELEASE.2020-08-08T02-33-58Z
+
+* Sun Aug 02 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200731T233413Z-1
+- Update to RELEASE.2020-07-31T23-34-13Z
+
+* Sat Jul 18 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200717T025220Z-1
+- Update to RELEASE.2020-07-17T02-52-20Z
+
+* Sun Jul 12 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200711T051852Z-1
+- Update to RELEASE.2020-07-11T05-18-52Z
+
+* Sat Jun 27 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200626T195655Z-1
+- Update to RELEASE.2020-06-26T19-56-55Z
+
+* Sun Jun 21 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200620T001843Z-1
+- Update to RELEASE.2020-06-20T00-18-43Z
+
+* Wed Jun 17 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200616T192441Z-1
+- Update to RELEASE.2020-06-16T19-24-41Z
+
+* Sat May 30 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200528T234336Z-1
+- Update to RELEASE.2020-05-28T23-43-36Z
+
 * Sun May 17 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200516T014437Z-1
 - Update to RELEASE.2020-05-16T01-44-37Z
 

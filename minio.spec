@@ -1,6 +1,6 @@
 %define debug_package %{nil}
 
-%define  tag   RELEASE.2020-05-16T01-33-21Z
+%define  tag   RELEASE.2020-08-13T02-39-50Z
 %define  stag  %(echo "%{tag}" | tr -d '-')
 %define  uid   minio
 %define  gid   minio
@@ -14,8 +14,8 @@ Release:       1%{?dist}
 License:       ASL 2.0
 
 Source0:       https://dl.min.io/server/minio/release/linux-amd64/archive/%{name}.%{tag}
-Source1:       https://raw.githubusercontent.com/lkiesow/minio-rpm/master/minio.service
-Source2:       https://raw.githubusercontent.com/lkiesow/minio-rpm/master/minio.conf
+Source1:       minio.service
+Source2:       minio.conf
 Source3:       https://raw.githubusercontent.com/minio/minio/%{tag}/LICENSE
 URL:           https://min.io
 BuildRoot:     %{_tmppath}/%{name}-root
@@ -102,6 +102,75 @@ fi
 
 
 %changelog
+* Fri Aug 14 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200813T023950Z-1
+- Update to RELEASE.2020-08-13T02-39-50Z
+
+* Sun Aug 09 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200808T045006Z-1
+- Update to RELEASE.2020-08-08T04-50-06Z
+
+* Sat Aug 08 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200807T012307Z-1
+- Update to RELEASE.2020-08-07T01-23-07Z
+
+* Thu Aug 06 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200805T213413Z-1
+- Update to RELEASE.2020-08-05T21-34-13Z
+
+* Wed Aug 05 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200804T231051Z-1
+- Update to RELEASE.2020-08-04T23-10-51Z
+
+* Sat Aug 01 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200731T033905Z-1
+- Update to RELEASE.2020-07-31T03-39-05Z
+
+* Tue Jul 28 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200727T183702Z-1
+- Update to RELEASE.2020-07-27T18-37-02Z
+
+* Sun Jul 26 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200724T224305Z-1
+- Update to RELEASE.2020-07-24T22-43-05Z
+
+* Thu Jul 23 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200722T002633Z-1
+- Update to RELEASE.2020-07-22T00-26-33Z
+
+* Tue Jul 21 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200720T022516Z-1
+- Update to RELEASE.2020-07-20T02-25-16Z
+
+* Sun Jul 19 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200718T184816Z-1
+- Update to RELEASE.2020-07-18T18-48-16Z
+
+* Wed Jul 15 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200714T191430Z-1
+- Update to RELEASE.2020-07-14T19-14-30Z
+
+* Tue Jul 14 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200713T180956Z-1
+- Update to RELEASE.2020-07-13T18-09-56Z
+
+* Mon Jul 13 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200712T191417Z-1
+- Update to RELEASE.2020-07-12T19-14-17Z
+
+* Sun Jul 12 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200711T211423Z-1
+- Update to RELEASE.2020-07-11T21-14-23Z
+
+* Fri Jul 03 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200702T001509Z-1
+- Update to RELEASE.2020-07-02T00-15-09Z
+
+* Tue Jun 23 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200622T031250Z-1
+- Update to RELEASE.2020-06-22T03-12-50Z
+
+* Fri Jun 19 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200618T022335Z-1
+- Update to RELEASE.2020-06-18T02-23-35Z
+
+* Mon Jun 15 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200614T183217Z-1
+- Update to RELEASE.2020-06-14T18-32-17Z
+
+* Sat Jun 13 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200612T000619Z-1
+- Update to RELEASE.2020-06-12T00-06-19Z
+
+* Fri Jun 05 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200603T221349Z-1
+- Update to RELEASE.2020-06-03T22-13-49Z
+
+* Tue Jun 02 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200601T172803Z-1
+- Update to RELEASE.2020-06-01T17-28-03Z
+
+* Sat May 30 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200529T140849Z-1
+- Update to RELEASE.2020-05-29T14-08-49Z
+
 * Sun May 17 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20200516T013321Z-1
 - Update to RELEASE.2020-05-16T01-33-21Z
 
