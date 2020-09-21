@@ -3,17 +3,25 @@
 %define  tag   RELEASE.2020-09-18T00-13-21Z
 %define  stag  %(echo "%{tag}" | tr -d '-')
 
-Name:          minio-mc
+Name:          mc
 Summary:       MinIO Client
 Version:       0.1.%{stag}
 Release:       1%{?dist}
 License:       ASL 2.0
 
-Source0:       https://dl.min.io/client/mc/release/linux-amd64/archive/mc.%{tag}
+Source0:       https://github.com/minio/mc/archive/%{tag}.tar.gz
 Source1:       https://raw.githubusercontent.com/minio/mc/%{tag}/LICENSE
 URL:           https://min.io
 BuildRoot:     %{_tmppath}/%{name}-root
+BuildRequires: golang
+BuildRequires: git
 
+## Disable debug packages.
+%define         debug_package %{nil}
+
+## Go related tags.
+%define         gobuild(o:) go build -tags=kqueue -trimpath -ldflags "${LDFLAGS:-}" %{?**};
+%define         import_path     github.com/minio/mc
 
 %description
 MinIO Client is a replacement for ls, cp, mkdir, diff and rsync commands for
@@ -21,14 +29,27 @@ filesystems and object storage.
 
 
 %prep
+%setup -qc
+mv %{name}-*/* .
+
+install -d src/$(dirname %{import_path})
+ln -s ../../.. src/%{import_path}
 
 %build
+# setup flags like 'go run buildscripts/gen-ldflags.go' would do
+tag=%{tag}
+version=${tag#RELEASE.}
+prefix=%{import_path}/cmd
+
+LDFLAGS="-X $prefix.Version=$version -X $prefix.ReleaseTag=$tag"
+
+%gobuild -o %{name} %{import_path}
 
 %install
 rm -rf %{buildroot}
 
 # install binary
-install -p -D -m 0755 %{SOURCE0} %{buildroot}%{_bindir}/%{name}
+install -p -D -m 0755 %{name} %{buildroot}%{_bindir}/%{name}
 cp %{SOURCE1} .
 
 

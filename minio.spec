@@ -13,27 +13,49 @@ Version:       0.1.%{stag}
 Release:       1%{?dist}
 License:       ASL 2.0
 
-Source0:       https://dl.min.io/server/minio/release/linux-amd64/archive/%{name}.%{tag}
+Source0:       https://github.com/minio/minio/archive/%{tag}.tar.gz
 Source1:       minio.service
 Source2:       minio.conf
 Source3:       https://raw.githubusercontent.com/minio/minio/%{tag}/LICENSE
 URL:           https://min.io
 BuildRoot:     %{_tmppath}/%{name}-root
 
+BuildRequires:     git
+BuildRequires:     golang
 BuildRequires:     systemd
 Requires(post):    systemd
 Requires(preun):   systemd
 Requires(postun):  systemd
 
+## Disable debug packages.
+%define         debug_package %{nil}
+
+## Go related tags.
+%define         gobuild(o:) go build -tags=kqueue -trimpath -ldflags "${LDFLAGS:-}" %{?**};
+%define         import_path     github.com/minio/minio
 
 %description
 The 100 percent Open Source, Enterprise-Grade,
 Amazon S3 Compatible Object Storage
 
-
 %prep
+%setup -qc
+mv %{name}-*/* .
+
+install -d src/$(dirname %{import_path})
+ln -s ../../.. src/%{import_path}
+
+
 
 %build
+# setup flags like 'go run buildscripts/gen-ldflags.go' would do
+tag=%{tag}
+version=${tag#RELEASE.}
+prefix=%{import_path}/cmd
+
+LDFLAGS="-X $prefix.Version=$version -X $prefix.ReleaseTag=$tag"
+
+%gobuild -o %{name} %{import_path}
 
 %install
 rm -rf %{buildroot}
@@ -42,7 +64,7 @@ install -p -d -m 0755 %{buildroot}%{_sysconfdir}/%{name}/certs/
 install -p -d -m 0755 %{buildroot}%{_sharedstatedir}/minio
 
 # install binary
-install -p -D -m 0755 %{SOURCE0} %{buildroot}%{_bindir}/%{name}
+install -p -D -m 0755 %{name} %{buildroot}%{_bindir}/%{name}
 
 # install unit file
 install -p -D -m 0644 \
