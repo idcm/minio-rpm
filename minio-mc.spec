@@ -1,6 +1,6 @@
 %define debug_package %{nil}
 
-%define  tag   RELEASE.2020-10-03T02-54-56Z
+%define  tag   RELEASE.2021-02-10T07-32-57Z
 %define  stag  %(echo "%{tag}" | tr -d '-')
 
 Name:          mc
@@ -64,6 +64,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Fri Feb 12 2021 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20210210T073257Z-1
+- Update to RELEASE.2021-02-10T07-32-57Z
+
 * Sun Oct 04 2020 Lars Kiesow <lkiesow@uos.de> - 0.1.RELEASE.20201003T025456Z-1
 - Update to RELEASE.2020-10-03T02-54-56Z
 
